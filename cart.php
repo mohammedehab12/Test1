@@ -53,7 +53,7 @@ $total = $subtotal;
                 <div class="cart-item">
                     <div class="row align-items-center">
                         <div class="col-md-2">
-                            <img src="images/products/<?php echo $item['image']; ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="img-fluid" onerror="this.src='images/placeholder.jpg'">
+                            <img src="images/products/<?php echo htmlspecialchars($item['image']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="img-fluid" onerror="this.src='images/placeholder.jpg'">
                         </div>
                         <div class="col-md-5">
                             <h5><?php echo htmlspecialchars($item['name']); ?></h5>

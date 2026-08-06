@@ -78,7 +78,7 @@ $featured_result = $conn->query($featured_query);
                 <?php while($product = $featured_result->fetch_assoc()): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card product-card h-100">
-                        <img src="images/products/<?php echo $product['image']; ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['name']); ?>">
+                        <img src="images/products/<?php echo htmlspecialchars($product['image']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['name']); ?>" onerror="this.src='images/placeholder.jpg'">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($product['name']); ?></h5>
                             <p class="card-text text-muted"><?php echo substr($product['description'], 0, 80); ?>...</p>

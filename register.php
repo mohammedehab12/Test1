@@ -7,6 +7,12 @@ if (isLoggedIn()) {
 
 $error = '';
 
+$redirect = $_GET['redirect'] ?? 'index.php';
+// Only allow local relative paths to prevent open-redirect attacks
+if (!preg_match('/^[a-zA-Z0-9_\-]+\.php(\?[a-zA-Z0-9_\-=&%.]*)?$/', $redirect)) {
+    $redirect = 'index.php';
+}
+
 // Preserve submitted values so the form can be re-shown with them
 $old = [
     'name'  => '',
@@ -42,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($check_result->num_rows > 0) {
             // Email already registered -> send the user to Login with a clear message
-            redirect('login.php?notice=already_registered');
+            redirect('login.php?notice=already_registered&redirect=' . urlencode($redirect));
         } else {
             // Hash password and insert user
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -57,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_name'] = $name;
                 $_SESSION['user_email'] = $email;
 
-                redirect('index.php');
+                redirect($redirect);
             } else {
                 $error = 'Registration failed. Please try again.';
             }

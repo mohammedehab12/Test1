@@ -81,7 +81,7 @@ $orders_result = $stmt->get_result();
 
                         <?php while ($item = $items_result->fetch_assoc()): ?>
                         <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
-                            <img src="images/products/<?php echo $item['image']; ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;" onerror="this.src='images/placeholder.jpg'">
+                            <img src="images/products/<?php echo htmlspecialchars($item['image']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;" onerror="this.src='images/placeholder.jpg'">
                             <div class="ms-3 flex-grow-1">
                                 <h6 class="mb-1"><?php echo htmlspecialchars($item['name']); ?></h6>
                                 <small class="text-muted">Quantity: <?php echo $item['quantity']; ?> × <?php echo formatPrice($item['price']); ?></small>

@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const action = this.getAttribute('data-action');
             const maxStock = parseInt(this.getAttribute('data-max')) || 999;
             
-            updateQuantity(productId, action, maxStock);
+            updateQuantity(productId, action, maxStock, this);
         });
     });
 
@@ -61,8 +61,8 @@ function addToCart(productId) {
 }
 
 // Update Quantity Function
-function updateQuantity(productId, action, maxStock) {
-    const quantityInput = event.target.closest('.input-group').querySelector('.quantity-input');
+function updateQuantity(productId, action, maxStock, buttonEl) {
+    const quantityInput = buttonEl.closest('.input-group').querySelector('.quantity-input');
     let currentQuantity = parseInt(quantityInput.value);
     
     if (action === 'increase') {
